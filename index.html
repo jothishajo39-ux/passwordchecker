@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecureCheck — Password Strength & Breach Analyzer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <main class="container">
+    <header class="app-header">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4Z"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+        <span>SecureCheck</span>
+      </div>
+      <p class="tagline">Password Strength &amp; Breach Analyzer</p>
+    </header>
+
+    <section class="card">
+      <label for="pwd" class="field-label">Enter a password to analyze</label>
+      <div class="input-wrap">
+        <input type="password" id="pwd" placeholder="Type or paste a password…" autocomplete="off" spellcheck="false">
+        <button id="toggleVisibility" type="button" aria-label="Show password">👁</button>
+      </div>
+
+      <div class="strength-meter">
+        <div class="strength-bar" id="strengthBar"></div>
+      </div>
+      <p class="strength-label" id="strengthLabel">Strength: —</p>
+
+      <ul class="rules" id="ruleList">
+        <li data-rule="length">At least 8 characters</li>
+        <li data-rule="upper">Contains an uppercase letter</li>
+        <li data-rule="lower">Contains a lowercase letter</li>
+        <li data-rule="number">Contains a number</li>
+        <li data-rule="special">Contains a special character</li>
+      </ul>
+
+      <button id="checkBreach" class="btn-primary" disabled>Check if this password was breached</button>
+
+      <div id="breachResult" class="breach-result hidden"></div>
+
+      <p class="privacy-note">
+        🔒 Your password is never sent anywhere. Only a partial SHA-1 hash prefix (first 5 characters)
+        is sent to the Have I Been Pwned API using the
+        <a href="https://haveibeenpwned.com/API/v3#PwnedPasswords" target="_blank" rel="noopener">k-anonymity model</a>.
+        The full password and full hash never leave your browser.
+      </p>
+    </section>
+
+    <footer class="app-footer">
+      <p>Built with HTML, CSS &amp; vanilla JavaScript · No backend required</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
